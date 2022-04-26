@@ -11,7 +11,7 @@
         try {
 
             $login->checkLogin();
-            echo "Usuário logado";
+            header('Location: day_records.php');
 
         } catch (AppException $e) {
 
