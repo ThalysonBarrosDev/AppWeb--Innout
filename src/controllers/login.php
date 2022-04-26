@@ -11,7 +11,8 @@
         try {
 
             $login->checkLogin();
-            header('Location: day_records.php');
+
+            header('Location: ../src/views/day_records.php');
 
         } catch (AppException $e) {
 

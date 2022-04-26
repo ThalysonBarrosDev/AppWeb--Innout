@@ -42,6 +42,8 @@
 
         }
  
+        require_once (TEMPLATE_PATH . "/header.php");
         require_once (VIEW_PATH . "/{$viewname}.php");
+        require_once (TEMPLATE_PATH . "/footer.php");
 
     }
