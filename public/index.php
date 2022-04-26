@@ -4,7 +4,7 @@
     
     $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
-    if ($uri == '/Projeto_Innout/public/' || $uri == 'Projeto_Innout/public' || $uri == 'Projeto_Innout/public/index.php') {
+    if ($uri == '/' || $uri == '' || $uri == '/index.php') {
 
         $uri = '/login.php';
 

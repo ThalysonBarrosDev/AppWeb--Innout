@@ -12,7 +12,7 @@
 
             $login->checkLogin();
 
-            header('Location: ../src/views/day_records.php');
+            header('Location: day_records.php');
 
         } catch (AppException $e) {
 
