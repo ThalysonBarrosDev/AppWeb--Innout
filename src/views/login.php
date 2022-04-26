@@ -13,7 +13,7 @@
 
 <body>
     
-    <form class="form-login" action="#" method="POST">
+    <form class="form-login" method="POST">
         <div class="login-card card">
             <div class="card-header">
                 <i class="icofont-travelling mr-2"></i>

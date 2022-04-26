@@ -12,18 +12,6 @@
 
         }
 
-        public function __get($key) {
-
-            return $this->values[$key];
-
-        }
-
-        public function __set($key, $value) {
-
-            $this->values[$key] = $value;
-
-        }
-
         public function loadFromArray($arr) {
 
             if ($arr) {
@@ -38,6 +26,18 @@
 
         }
 
+        public function __get($key) {
+
+            return $this->values[$key];
+
+        }
+
+        public function __set($key, $value) {
+
+            $this->values[$key] = $value;
+
+        }
+        
         public static function get($filters = [], $columns = '*') {
 
             $objects = [];
@@ -56,6 +56,15 @@
             }
 
             return $objects;
+
+        }
+
+        public static function getOne($filters = [], $columns = '*') {
+
+            $class = get_called_class();
+            $result = static::getResultSetFromSelect($filters, $columns);
+
+            return $result ? new $class($result->fetch_assoc()) : null;
 
         }
 
