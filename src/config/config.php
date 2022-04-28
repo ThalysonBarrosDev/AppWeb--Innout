@@ -15,6 +15,8 @@
     // Arquivos do Projeto
     require_once (realpath(dirname(__FILE__) . '/../database/Connection.php'));
     require_once (realpath(dirname(__FILE__) . '/loader.php'));
+    require_once (realpath(dirname(__FILE__) . '/session.php'));
     require_once (realpath(MODEL_PATH . '/../models/Model.php'));
+    require_once (realpath(MODEL_PATH . '/../models/User.php'));
     require_once (realpath(EXCEPTION_PATH . '/../exceptions/AppException.php'));
     require_once (realpath(EXCEPTION_PATH . '/../exceptions/ValidationException.php'));

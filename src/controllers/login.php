@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     loadModel('Login');
 
     $exception = null;
@@ -11,6 +13,8 @@
         try {
 
             $login->checkLogin();
+
+            $_SESSION['user'] = $user;
 
             header('Location: day_records.php');
 
