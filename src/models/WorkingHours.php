@@ -23,4 +23,39 @@
 
         }
 
+        public function getNextTime() {
+
+            if (!$this->time1) return 'time1';
+            if (!$this->time2) return 'time2';
+            if (!$this->time3) return 'time3';
+            if (!$this->time4) return 'time4';
+
+            return NULL;
+
+        }
+
+        public function innout($time) {
+
+            $timecolumn = $this->getNextTime();
+
+            if (!$timecolumn) {
+
+                throw new AppException("Você já bateu os 4 pontos diários!");
+
+            }
+
+            $this->$timecolumn = $time;
+
+            if ($this->id) {
+
+                $this->update();
+
+            } else {
+
+                $this->insert();
+
+            }
+
+        }
+
     }
