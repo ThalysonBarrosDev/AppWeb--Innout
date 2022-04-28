@@ -16,7 +16,7 @@
     define('EXCEPTION_PATH', realpath(dirname(__FILE__) . '/../exceptions'));
 
     // Arquivos do Projeto
-    require_once (realpath(dirname(__FILE__) . '/../database/Connection.php'));
+    require_once (realpath(dirname(__FILE__) . '/../database/Database.php'));
     require_once (realpath(dirname(__FILE__) . '/loader.php'));
     require_once (realpath(dirname(__FILE__) . '/session.php'));
     require_once (realpath(dirname(__FILE__) . '/date_utils.php'));

@@ -22,7 +22,7 @@ body.hide-sidebar {
 header.header {
     grid-area: header;
     display: flex;
-    background-color: #1976d2;
+    background-color: #222;
     align-items: center;
     z-index: 10;
     box-shadow: 
