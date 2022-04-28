@@ -12,10 +12,10 @@
 
         try {
 
-            $login->checkLogin();
+            $user = $login->checkLogin();
 
             $_SESSION['user'] = $user;
-
+            
             header('Location: day_records.php');
 
         } catch (AppException $e) {
