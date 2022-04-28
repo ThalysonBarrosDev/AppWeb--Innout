@@ -52,17 +52,18 @@
     function populateWorkingHours($user_id, $initial_date, $regular_rate, $extra_rate, $lazy_rate) {
 
         $current_date = $initial_date;
-        $today = new DateTime();
+        $yesterday = new DateTime();
+        $yesterday->modify('-1 day');
         $colums = ['user_id' => $user_id, 'work_date' => $current_date];
 
-        while (isBefore($current_date, $today)) {
+        while (isBefore($current_date, $yesterday)) {
 
             if (!isWeekend($current_date)) {
 
                 $template = getDatTemplateByOdds($regular_rate, $extra_rate, $lazy_rate);
                 $colums = array_merge($colums, $template);
                 $working_hours = new WorkingHours($colums);
-                $working_hours->save();
+                $working_hours->insert();
 
             }
 

@@ -85,7 +85,7 @@
 
         }
 
-        public function save() {
+        public function insert() {
 
             $sql = 'INSERT INTO ' . static::$tablename . ' (' . implode(",", static::$columns) . ') VALUES (';
 
@@ -99,6 +99,23 @@
 
             $id = Database::executeSQL($sql);
             $this-> id = $id;
+
+        }
+
+        public function update() {
+
+            $sql = 'UPDATE ' . static::$tablename . ' SET ';
+
+            foreach (static::$columns as $col) {
+
+                $sql .= " ${col} = " . static::getFormatedValue($this->$col) . ',';
+
+            }
+
+            $sql[strlen($sql) - 1] = ' ';
+            $sql .= "WHERE id = {$this->id}";
+
+            Database::executeSQL($sql);
 
         }
 
