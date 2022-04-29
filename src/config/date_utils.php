@@ -28,3 +28,33 @@
         return $inputdate;
 
     }
+
+    function sumIntervals($intervalone, $intervaltwo) {
+
+        $date = new DateTime('00:00:00');
+        $date->add($intervalone);
+        $date->add($intervaltwo);
+        return (new DateTime('00:00:00'))->diff($date);
+
+    }
+
+    function subtractIntervals($intervalone, $intervaltwo) {
+
+        $date = new DateTime('00:00:00');
+        $date->add($intervalone);
+        $date->sub($intervaltwo);
+        return (new DateTime('00:00:00'))->diff($date);
+
+    }
+
+    function getDateFromInterval($interval) {
+
+        return new DateTimeImmutable($interval->format('%H:%i:%s'));
+
+    }
+
+    function getDateFromString($str) {
+
+        return DateTimeImmutable::createFromFormat('H:i:s', $str);
+
+    }
