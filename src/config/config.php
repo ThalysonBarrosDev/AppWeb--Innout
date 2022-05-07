@@ -3,7 +3,7 @@
     error_reporting(E_ERROR);
 
     date_default_timezone_set('America/Sao_Paulo');
-    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'portuguese');
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.uft-8', 'portuguese');
 
     // Constantes Gerais
     define('DAILY_TIME', 60 * 60 * 8);

@@ -132,6 +132,19 @@
 
         }
 
+        function getBalance() {
+
+            if (!$this->time1 && !isPastWorkday($this->work_date)) return '';
+            if ($this->worked_time == DAILY_TIME) return '-';
+
+            $balance = $this->worked_time - DAILY_TIME;
+            $balancestr = getTimeStringFromSeconds(abs($balance));
+            $sign = $this->worked_time >= DAILY_TIME ? '+' : '-';
+            
+            return "{$sign}{$balancestr}";
+
+        }
+
         public static function getMonthlyReport($userid, $date) {
 
             $registries = [];
