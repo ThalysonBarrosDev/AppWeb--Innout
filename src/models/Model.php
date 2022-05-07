@@ -119,6 +119,26 @@
 
         }
 
+        public static function getCount($filters = []) {
+
+            $result = static::getResultSetFromSelect($filters, 'count(*) as count');
+            return $result->fetch_assoc()['count'];
+
+        }
+    
+        public function delete() {
+
+            static::deleteById($this->id);
+
+        }
+    
+        public static function deleteById($id) {
+
+            $sql = "DELETE FROM " . static::$tablename . " WHERE id = {$id}";
+            Database::executeSQL($sql);
+            
+        }
+
         private static function getFilters($filters) {
             
             $sql = '';
