@@ -13,8 +13,8 @@
             <i class="icon icofont-hour-glass text-primary"></i>
 
             <div class="info">
-                <span class="main text-primary">04:23</span>
-                <span class="label text-mute">Horas Trabalhadas</span>
+                <span class="main text-primary" <?= $activeclock === 'workedinterval' ? 'active-clock' : '' ?>><?= $workinginterval; ?></span>
+                <span class="label text-mute" >Horas Trabalhadas</span>
             </div>
         </div>
 
@@ -24,7 +24,7 @@
             <i class="icon icofont-ui-alarm text-danger"></i>
 
             <div class="info">
-                <span class="main text-danger">18:00</span>
+                <span class="main text-danger" <?= $activeclock === 'exittime' ? 'active-clock' : '' ?>><?= $exittime; ?></span>
                 <span class="label text-mute">Hora de Saída</span>
             </div>
         </div>

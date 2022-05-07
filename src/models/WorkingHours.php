@@ -34,6 +34,26 @@
 
         }
 
+        public function getActiveClock() {
+
+            $nexttime = $this->getNextTime();
+
+            if ($nexttime === 'time1' || $nexttime === 'time3') {
+
+                return 'exittime';
+
+            } elseif ($nexttime === 'time2' || $nexttime === 'time4') {
+
+                return 'workedinterval';
+
+            } else {
+
+                return NULL;
+
+            }
+
+        }
+
         public function innout($time) {
 
             $timecolumn = $this->getNextTime();
@@ -71,6 +91,43 @@
             if ($t4) { $part2 = $t3->diff($t4); }
 
             return sumIntervals($part1, $part2);
+
+        }
+
+        function getLunchInterval() {
+
+            [ , $t2, $t3, ] = $this->getTimes();
+
+            $lunchinterval = new DateInterval('PT0S');
+
+            if ($t2) { $lunchinterval = $t2->diff(new DateTime()); }
+            if ($t3) { $lunchinterval = $t2->diff($t3); }
+
+            return $lunchinterval;
+
+        }
+
+        function getExitTime() {
+
+            [$t1, , , $t4] = $this->getTimes();
+
+            $workday = DateInterval::createFromDateString('8 hours');
+
+            if (!$t1) {
+
+                return (new DateTime())->add($workday);
+
+            } elseif ($t4) {
+
+                return $t4;
+
+            } else {
+
+                $total = sumIntervals($workday, $this->getLunchInterval());
+
+                return $t1->add($total);
+
+            }
 
         }
 

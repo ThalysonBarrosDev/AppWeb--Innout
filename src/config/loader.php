@@ -41,6 +41,12 @@
             }
 
         }
+
+        $user = $_SESSION['user'];
+        $workinghours = WorkingHours::loadFromUserAndDate($user->id, date('Y-m-d'));
+        $workinginterval = $workinghours->getWorkedInterval()->format('%H:%I:%S');
+        $exittime = $workinghours->getExitTime()->format('H:i:s');
+        $activeclock = $workinghours->getActiveClock();
  
         require_once (TEMPLATE_PATH . "/header.php");
         require_once (TEMPLATE_PATH . "/left.php");
