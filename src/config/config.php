@@ -23,5 +23,6 @@
     require_once (realpath(dirname(__FILE__) . '/utils.php'));
     require_once (realpath(MODEL_PATH . '/../models/Model.php'));
     require_once (realpath(MODEL_PATH . '/../models/User.php'));
+    require_once (realpath(MODEL_PATH . '/../models/WorkingHours.php'));
     require_once (realpath(EXCEPTION_PATH . '/../exceptions/AppException.php'));
     require_once (realpath(EXCEPTION_PATH . '/../exceptions/ValidationException.php'));

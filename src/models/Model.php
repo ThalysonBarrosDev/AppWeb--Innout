@@ -129,7 +129,15 @@
 
                 foreach ($filters as $column => $value) {
 
-                    $sql .= " AND ${column} = " . static::getFormatedValue($value);
+                    if ($column == 'raw') {
+
+                        $sql .= " AND {$value}";
+
+                    } else {
+
+                        $sql .= " AND ${column} = " . static::getFormatedValue($value);
+
+                    }
 
                 }
 

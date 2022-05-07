@@ -65,6 +65,7 @@
             }
 
             $this->$timecolumn = $time;
+            $this->worked_time = getSecondsFromDateInterval($this->getWorkedInterval());
 
             if ($this->id) {
 
@@ -128,6 +129,29 @@
                 return $t1->add($total);
 
             }
+
+        }
+
+        public static function getMonthlyReport($userid, $date) {
+
+            $registries = [];
+
+            $startdate = getFirstDayOfMonth($date)->format('Y-m-d');
+            $enddate = getLastDayOfMonth($date)->format('Y-m-d');
+
+            $result = static::getResultSetFromSelect(['user_id' => $userid, 'raw' => "work_date BETWEEN '{$startdate}' AND '{$enddate}'"]);
+
+            if ($result) {
+
+                while ($row = $result->fetch_assoc()) {
+
+                    $registries[$row['work_date']] = new WorkingHours($row);
+
+                }
+
+            }
+
+            return $registries;
 
         }
 
