@@ -2,6 +2,36 @@
     <?php renderTitle('Relatório Mensal', 'Acompanhe seu saldo de horas', 'icofont-ui-calendar'); ?>
 
     <div>
+
+        <form class="mb-4" method="POST">
+            <div class="input-group">
+                <?php if ($user->is_admin): ?>
+                    <select class="form-control mr-2" name="user" placeholder="Selecione o usuário...">
+                        <?php 
+                            foreach($users as $user) { 
+                                
+                                $selected = $user->id === $selecteduserid ? 'selected' : ''; 
+                                echo "<option value='{$user->id}' {$selected}>{$user->name}</option>"; 
+                            
+                            } 
+                        ?>
+                    </select>
+                <?php endif; ?>
+                <select class="form-control" name="period" placeholder="Selecione o período...">
+                    <?php 
+                        foreach($periods as $key => $month) { 
+                            
+                            $selected = $key === $selectedperiod ? 'selected' : ''; 
+                            echo "<option value='{$key}' {$selected}>{$month}</option>"; 
+                            
+                        } 
+                    ?>
+                </select>
+
+                <button class="btn btn-primary ml-3"><i class="icofont-search"></i></button>
+            </div>
+        </form>
+
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <th>Dia</th>
@@ -14,7 +44,7 @@
             <tbody>
                 <?php foreach ($report as $registry): ?>
                     <tr>
-                        <td><?= formatDateWithLocale($registry->work_date, '%A, %d de %B de %Y') ?></td>
+                        <td><?= formatDateWithLocale($registry->work_date, '%d de %B de %Y') ?></td>
                         <td><?= $registry->time1 ?></td>
                         <td><?= $registry->time2 ?></td>
                         <td><?= $registry->time3 ?></td>
